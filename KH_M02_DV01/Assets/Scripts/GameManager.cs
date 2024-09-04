@@ -30,11 +30,25 @@ namespace Chapter.Singleton
                 "Game session lasted: " + timeDifference);
         }
 
-        private void OnGUI()
+        /*private void OnGUI()
         {
             if (GUILayout.Button("Next Scene"))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+        }*/
+
+        private void OnGUI()
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            // dont display button if youre on the last scene
+            if (currentSceneIndex != 1)
+            {
+                if (GUILayout.Button("Next Scene"))
+                {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                }
             }
         }
     }
